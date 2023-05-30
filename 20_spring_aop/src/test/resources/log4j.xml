@@ -40,9 +40,18 @@
 	 
 	  -->
 	
+	<!-- DailyFile Appenders web_log에 logTest.log.txt 만들기-->
+	<appender name="dailyFileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="C:\\web_log\\logTest.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+		  <param name="DatePattern"   value="'.'yyyy-MM-dd"/>
+		  <param name="ConversionPattern"   value="[%d{HH:mm:ss}][%-5p](%F:%L)-%m%n"/>
+		</layout>
+	</appender>
+	
 	<!-- Application Loggers -->
 	<logger name="com.spring.aop">
-		<level value="info" />
+		<level value="warn" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -66,6 +75,7 @@
 	<root>
 		<priority value="info" />
 		<appender-ref ref="console" />
+		<appender-ref ref="dailyFileAppender"/>
 	</root>
 	
 </log4j:configuration>
